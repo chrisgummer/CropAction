@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'CropAction' target in the 'CropAction' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
