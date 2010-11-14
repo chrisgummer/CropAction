@@ -13,6 +13,8 @@
 
 static CGSize iPhonePortrait;
 static CGSize iPhoneLandscape;
+static CGSize iPhone4Portrait;
+static CGSize iPhone4Landscape;
 static CGSize iPadPortrait;
 static CGSize iPadLandscape;
 static CGFloat cropHeight;
@@ -23,10 +25,18 @@ static CGFloat cropHeight;
 	CGSize imageSize = CGSizeMake(CGImageGetWidth(imageRef), CGImageGetHeight(imageRef));
 	if (CGSizeEqualToSize(imageSize, iPhonePortrait) ||
 		CGSizeEqualToSize(imageSize, iPhoneLandscape) ||
+		CGSizeEqualToSize(imageSize, iPhone4Portrait) ||
+		CGSizeEqualToSize(imageSize, iPhone4Landscape) ||
 		CGSizeEqualToSize(imageSize, iPadPortrait) ||
 		CGSizeEqualToSize(imageSize, iPadLandscape)) {
+        cropHeight = 20.0f;
+        if (CGSizeEqualToSize(imageSize, iPhone4Portrait) ||
+            CGSizeEqualToSize(imageSize, iPhone4Landscape)) {
+            cropHeight *= 2.0f;
+        }
+
 		imageRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(0.0f, cropHeight, CGImageGetWidth(imageRef), CGImageGetHeight(imageRef)));
-		
+
 		NSString *pathExtension = [sourceImagePath pathExtension];
 		NSString *fileNameSuffix = [[self parameters] objectForKey:@"fileNameSuffix"];
 		NSString *editImagePath = sourceImagePath;
@@ -44,9 +54,10 @@ static CGFloat cropHeight;
 - (id)runWithInput:(id)input fromAction:(AMAction *)anAction error:(NSDictionary **)errorInfo {
 	iPhonePortrait = CGSizeMake(320.0f, 480.0f);
 	iPhoneLandscape = CGSizeMake(480.0f, 320.0f);
+	iPhone4Portrait = CGSizeMake(640.0f, 960.0f);
+	iPhone4Landscape = CGSizeMake(960.0f, 640.0f);
 	iPadPortrait = CGSizeMake(768.0f, 1024.0f);
 	iPadLandscape = CGSizeMake(1024.0f, 768.0f);
-	cropHeight = 20.0f;
 	
 	NSArray *acceptedImageExtensions = [NSArray arrayWithObjects:@"png", @"tiff", @"jpg", @"jpeg", nil];
 	
@@ -54,7 +65,6 @@ static CGFloat cropHeight;
 	for (NSString *path in input) {
 		NSString *pathExtension = [[path pathExtension] lowercaseString];
 		if ([acceptedImageExtensions containsObject:pathExtension]) {
-//		if ([pathExtension isEqualToString:@"png"] || [pathExtension isEqualToString:@"tiff"] || [pathExtension isEqualToString:@"jpg"] || [pathExtension isEqualToString:@"jpeg"]) {
 			[self cropImageAtPath:path];
 		}
 	}
