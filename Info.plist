@@ -36,7 +36,7 @@
 		<key>AMDRelatedActions</key>
 		<string>(* AMDRelatedActions bundle ids go here. (optional) *)</string>
 		<key>AMDRequires</key>
-		<string>(* AMDRequires text to explain anything outside of Automator required for the action&apos;s operation, e.g. a web page open in Safari, goes here. (optional) *)</string>
+		<string>(* AMDRequires text to explain anything outside of Automator required for the action's operation, e.g. a web page open in Safari, goes here. (optional) *)</string>
 		<key>AMDResult</key>
 		<string>(* AMDResult text to further explain the types provided as output goes here. (optional) *)</string>
 		<key>AMDSummary</key>
@@ -68,7 +68,7 @@
 		<key>ApplyButton</key>
 		<string>(* Button label for user to add proposed Action, e.g. Add. *)</string>
 		<key>IgnoreButton</key>
-		<string>(* Button label for user not to add proposed Action, e.g. Don&apos;t Add. *)</string>
+		<string>(* Button label for user not to add proposed Action, e.g. Don't Add. *)</string>
 		<key>Level</key>
 		<integer>0</integer>
 		<key>Message</key>
@@ -91,11 +91,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2010 Chris Gummer, All Rights Reserved.</string>
 	<key>NSPrincipalClass</key>

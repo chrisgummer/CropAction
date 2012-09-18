@@ -15,8 +15,12 @@ static CGSize iPhonePortrait;
 static CGSize iPhoneLandscape;
 static CGSize iPhone4Portrait;
 static CGSize iPhone4Landscape;
+static CGSize iPhone5Portrait;
+static CGSize iPhone5Landscape;
 static CGSize iPadPortrait;
 static CGSize iPadLandscape;
+static CGSize iPadRetinaPortrait;
+static CGSize iPadRetinaLandscape;
 static CGFloat cropHeight;
 
 - (void)cropImageAtPath:(NSString *)sourceImagePath {
@@ -28,10 +32,18 @@ static CGFloat cropHeight;
 		CGSizeEqualToSize(imageSize, iPhone4Portrait) ||
 		CGSizeEqualToSize(imageSize, iPhone4Landscape) ||
 		CGSizeEqualToSize(imageSize, iPadPortrait) ||
-		CGSizeEqualToSize(imageSize, iPadLandscape)) {
+		CGSizeEqualToSize(imageSize, iPadLandscape) ||
+		CGSizeEqualToSize(imageSize, iPadRetinaPortrait) ||
+		CGSizeEqualToSize(imageSize, iPadRetinaLandscape) ||
+        CGSizeEqualToSize(imageSize, iPhone5Portrait) ||
+        CGSizeEqualToSize(imageSize, iPhone5Landscape)) {
         cropHeight = 20.0f;
         if (CGSizeEqualToSize(imageSize, iPhone4Portrait) ||
-            CGSizeEqualToSize(imageSize, iPhone4Landscape)) {
+            CGSizeEqualToSize(imageSize, iPhone4Landscape) ||
+            CGSizeEqualToSize(imageSize, iPhone5Portrait) ||
+            CGSizeEqualToSize(imageSize, iPhone5Landscape) ||
+            CGSizeEqualToSize(imageSize, iPadRetinaPortrait) ||
+            CGSizeEqualToSize(imageSize, iPadRetinaLandscape)) {
             cropHeight *= 2.0f;
         }
 
@@ -56,8 +68,12 @@ static CGFloat cropHeight;
 	iPhoneLandscape = CGSizeMake(480.0f, 320.0f);
 	iPhone4Portrait = CGSizeMake(640.0f, 960.0f);
 	iPhone4Landscape = CGSizeMake(960.0f, 640.0f);
+	iPhone5Portrait = CGSizeMake(640.0f, 1136.0f);
+	iPhone5Landscape = CGSizeMake(1136.0f, 640.0f);
 	iPadPortrait = CGSizeMake(768.0f, 1024.0f);
 	iPadLandscape = CGSizeMake(1024.0f, 768.0f);
+	iPadRetinaPortrait = CGSizeMake(1536.0f, 2048.0f);
+	iPadRetinaLandscape = CGSizeMake(2048.0f, 1536.0f);
 	
 	NSArray *acceptedImageExtensions = [NSArray arrayWithObjects:@"png", @"tiff", @"jpg", @"jpeg", nil];
 	
